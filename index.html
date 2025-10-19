@@ -1,1 +1,75 @@
+<!DOCTYPE html>
 
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expert Blog Architecture</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="container header__wrapper">
+
+            <h1 class="logo">Expert Blog 💻</h1>
+
+            <nav class="nav">
+
+                <a href="#" class="nav__link">Arsitektur</a>
+
+                <a href="#" class="nav__link">OOP</a>
+
+                <a href="#" class="nav__link">Modul</a>
+
+            </nav>
+
+            <!-- Data attribute digunakan sebagai hook untuk JS -->
+
+            <button class="theme-toggle" data-js="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+
+        </div>
+
+    </header>
+
+    <main class="main container">
+
+        <h2>Postingan Terbaru (Rendered by JS)</h2>
+
+        <!-- Kontainer utama tempat JS merender komponen blog -->
+
+        <section data-js="post-list" class="post-list">
+
+            <!-- Loading state -->
+
+            <p class="loading-state">Memuat data dari server...</p>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>&copy; 2025 Exa16indo. Arsitektur Expert Level.</p>
+
+        </div>
+
+    </footer>
+
+    <!-- Penting: type="module" memungkinkan kita menggunakan import/export di JS -->
+
+    <script src="app.js" type="module" defer></script>
+
+</body>
+
+</html>
