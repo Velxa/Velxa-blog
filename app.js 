@@ -1,1 +1,244 @@
-j
+// ======================================================
+
+// 1. DATA SIMULATION (Menggantikan fetch dari API/JSON)
+
+// ======================================================
+
+const MOCK_API_DATA = [
+
+    {
+
+        id: 'a1b2c3d4',
+
+        title: "Arsitektur Expert: Mengapa OOP Penting di Vanilla JS",
+
+        date: "2025-10-19",
+
+        summary: "Menggunakan Class dan modularitas membuat proyek besar tetap terorganisir dan mudah di-debug.",
+
+        tags: ['js', 'oop', 'architecture']
+
+    },
+
+    {
+
+        id: 'e5f6g7h8',
+
+        title: "CSS Custom Properties: State Management di Sisi Styling",
+
+        date: "2025-10-18",
+
+        summary: "Custom Properties (Variabel CSS) adalah kunci untuk tema dinamis seperti Dark Mode tanpa perlu banyak manipulasi DOM.",
+
+        tags: ['css', 'variables', 'darkmode']
+
+    },
+
+    {
+
+        id: 'i9j0k1l2',
+
+        title: "Web Components: Masa Depan Komponen Tanpa Framework",
+
+        date: "2025-10-17",
+
+        summary: "Pelajari cara membuat elemen HTML kustom yang dapat digunakan kembali (reusable) menggunakan Shadow DOM dan Custom Elements.",
+
+        tags: ['html', 'webcomponents']
+
+    }
+
+];
+
+
+// ======================================================
+
+// 2. CLASS: ThemeManager (Mengelola State Tema)
+
+// ======================================================
+
+class ThemeManager {
+
+    constructor(toggleSelector, darkClass = 'is-dark') {
+
+        this.toggleButton = document.querySelector(toggleSelector);
+
+        this.darkClass = darkClass;
+
+        this.init();
+
+    }
+
+    // Metode untuk inisialisasi tema saat aplikasi dimulai
+
+    init() {
+
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme === this.darkClass) {
+
+            document.body.classList.add(this.darkClass);
+
+            this.toggleButton.textContent = '☀️';
+
+        } else {
+
+            this.toggleButton.textContent = '🌙';
+
+        }
+
+        this.toggleButton.addEventListener('click', this.toggleTheme.bind(this));
+
+    }
+
+    // Metode utama untuk mengganti tema
+
+    toggleTheme() {
+
+        const isDarkMode = document.body.classList.toggle(this.darkClass);
+
+        
+
+        if (isDarkMode) {
+
+            localStorage.setItem('theme', this.darkClass);
+
+            this.toggleButton.textContent = '☀️';
+
+        } else {
+
+            localStorage.removeItem('theme');
+
+            this.toggleButton.textContent = '🌙';
+
+        }
+
+    }
+
+}
+
+
+// ======================================================
+
+// 3. CLASS: PostRenderer (Mengelola Tampilan Konten)
+
+// ======================================================
+
+class PostRenderer {
+
+    constructor(containerSelector) {
+
+        this.container = document.querySelector(containerSelector);
+
+    }
+
+    // Metode untuk membuat elemen card tunggal
+
+    _createPostCard(post) {
+
+        const card = document.createElement('article');
+
+        card.classList.add('post-card');
+
+        card.setAttribute('aria-labelledby', `post-title-\({post.id}`); // Aksesibilitas
+
+        
+
+        // Template literal untuk struktur komponen
+
+        card.innerHTML = `
+
+            <h3 class="post-card__title" id="post-title-\){post.id}">\({post.title}</h3>
+
+            <p class="post-card__date">Dipublikasi: \){post.date}</p>
+
+            <p class="post-card__summary">\({post.summary}</p>
+
+            <a href="/post/\){post.id}" class="post-card__link">Baca Selengkapnya &rarr;</a>
+
+        `;
+
+        return card;
+
+    }
+
+    // Metode untuk merender semua postingan
+
+    async renderPosts(dataPromise) {
+
+        this.container.innerHTML = '<p class="loading-state">Memuat...</p>';
+
+        
+
+        try {
+
+            // Tunggu data (simulasi network delay)
+
+            const posts = await dataPromise; 
+
+            if (posts.length === 0) {
+
+                this.container.innerHTML = '<p>Tidak ada postingan yang ditemukan.</p>';
+
+                return;
+
+            }
+
+            // Bersihkan container sebelum render
+
+            this.container.innerHTML = ''; 
+
+            posts.forEach(post => {
+
+                const cardElement = this._createPostCard(post);
+
+                this.container.appendChild(cardElement);
+
+            });
+
+        } catch (error) {
+
+            console.error("Gagal memuat postingan:", error);
+
+            this.container.innerHTML = '<p class="error-state">Terjadi kesalahan saat memuat data.</p>';
+
+        }
+
+    }
+
+}
+
+
+// ======================================================
+
+// 4. INITIALIZATION (Entry Point Aplikasi)
+
+// ======================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Inisialisasi Theme Manager
+
+    new ThemeManager('[data-js="theme-toggle"]');
+
+    // Inisialisasi Post Renderer
+
+    const postRenderer = new PostRenderer('[data-js="post-list"]');
+
+    
+
+    // Simulasi data fetching menggunakan Promise
+
+    const fetchData = new Promise(resolve => {
+
+        // Delay 500ms untuk mensimulasikan latency jaringan
+
+        setTimeout(() => resolve(MOCK_API_DATA), 500); 
+
+    });
+
+    // Render konten
+
+    postRenderer.renderPosts(fetchData);
+
+});
