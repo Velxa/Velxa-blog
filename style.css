@@ -1,1 +1,227 @@
-j
+/* ---------------------------------- */
+
+/* 1. Expert Variables & Reset */
+
+/* ---------------------------------- */
+
+:root {
+
+    /* Colors */
+
+    --color-primary: #007bff;
+
+    --color-text: #212529;
+
+    --color-bg: #f8f9fa;
+
+    --color-card-bg: #ffffff;
+
+    --color-shadow: rgba(0, 0, 0, 0.1);
+
+    
+
+    /* Spacing */
+
+    --space-sm: 8px;
+
+    --space-md: 16px;
+
+    --space-lg: 24px;
+
+}
+
+/* Dark Mode (Modifier Class) */
+
+body.is-dark {
+
+    --color-text: #e9ecef;
+
+    --color-bg: #212529;
+
+    --color-card-bg: #343a40;
+
+    --color-primary: #17a2b8; /* Aksen yang berbeda */
+
+    --color-shadow: rgba(255, 255, 255, 0.1);
+
+}
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+body {
+
+    font-family: 'Inter', sans-serif;
+
+    background-color: var(--color-bg);
+
+    color: var(--color-text);
+
+    transition: background-color 0.4s, color 0.4s;
+
+}
+
+.container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 var(--space-lg);
+
+}
+
+/* ---------------------------------- */
+
+/* 2. Header (BEM Example) */
+
+/* ---------------------------------- */
+
+.header {
+
+    background-color: var(--color-primary);
+
+    padding: var(--space-md) 0;
+
+}
+
+.header__wrapper {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.logo {
+
+    color: white;
+
+}
+
+.nav__link {
+
+    color: white;
+
+    text-decoration: none;
+
+    margin-left: var(--space-md);
+
+    padding: var(--space-sm);
+
+    border-radius: 4px;
+
+    transition: background-color 0.2s;
+
+}
+
+.nav__link:hover {
+
+    background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.theme-toggle {
+
+    background: none;
+
+    border: 1px solid white;
+
+    color: white;
+
+    padding: var(--space-sm) var(--space-md);
+
+    cursor: pointer;
+
+    border-radius: 5px;
+
+}
+
+/* ---------------------------------- */
+
+/* 3. Post List (Grid & Components) */
+
+/* ---------------------------------- */
+
+.main {
+
+    padding: var(--space-lg) 0;
+
+}
+
+.post-list {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: var(--space-lg);
+
+    margin-top: var(--space-lg);
+
+}
+
+.post-card {
+
+    background-color: var(--color-card-bg);
+
+    padding: var(--space-lg);
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 12px var(--color-shadow);
+
+    transition: transform 0.3s ease;
+
+}
+
+.post-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+.post-card__title {
+
+    color: var(--color-primary);
+
+    margin-bottom: var(--space-sm);
+
+}
+
+/* ---------------------------------- */
+
+/* 4. Responsiveness */
+
+/* ---------------------------------- */
+
+@media (max-width: 768px) {
+
+    .header__wrapper {
+
+        flex-direction: column;
+
+        gap: var(--space-md);
+
+    }
+
+    .nav {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+}
