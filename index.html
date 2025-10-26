@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="id">
+<html lang="en">
 
 <head>
 
@@ -8,67 +8,243 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Expert Blog Architecture</title>
+    <title>Mastery Blog</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="script.js" defer></script>
 
 </head>
 
 <body>
 
-    <header class="header">
+    <header>
 
-        <div class="container header__wrapper">
+        <div class="logo">
 
-            <h1 class="logo">Expert Blog 💻</h1>
+            <img src="logo.png" alt="Mastery Blog Logo">
 
-            <nav class="nav">
+        </div>
 
-                <a href="#" class="nav__link">Arsitektur</a>
+        <nav>
 
-                <a href="#" class="nav__link">OOP</a>
+            <a href="#">Home</a>
 
-                <a href="#" class="nav__link">Modul</a>
+            <a href="#">Articles</a>
 
-            </nav>
+            <a href="#">Courses</a>
 
-            <!-- Data attribute digunakan sebagai hook untuk JS -->
+            <a href="#">Community</a>
 
-            <button class="theme-toggle" data-js="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+            <a href="#">About</a>
+
+        </nav>
+
+        <div class="auth">
+
+            <button id="loginBtn">Login</button>
+
+            <button id="signupBtn">Sign Up</button>
 
         </div>
 
     </header>
 
-    <main class="main container">
+    <main>
 
-        <h2>Postingan Terbaru (Rendered by JS)</h2>
+        <section id="hero">
 
-        <!-- Kontainer utama tempat JS merender komponen blog -->
+            <div class="hero-content">
 
-        <section data-js="post-list" class="post-list">
+                <h1>Unlock Your Potential</h1>
 
-            <!-- Loading state -->
+                <p>Master new skills and achieve your goals with our expert-led courses and insightful articles.</p>
 
-            <p class="loading-state">Memuat data dari server...</p>
+                <button>Explore Courses</button>
+
+            </div>
+
+        </section>
+
+        <section id="featured-articles">
+
+            <h2>Featured Articles</h2>
+
+            <div class="article-grid">
+
+                <article class="article-card">
+
+                    <img src="featured1.jpg" alt="Coding Article">
+
+                    <h3>Mastering JavaScript Fundamentals</h3>
+
+                    <p>A comprehensive guide to understanding the core concepts of JavaScript.</p>
+
+                    <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+
+                </article>
+
+                <article class="article-card">
+
+                    <img src="featured2.jpg" alt="Design Article">
+
+                    <h3>The Principles of UI/UX Design</h3>
+
+                    <p>Learn how to create user-friendly and visually appealing interfaces.</p>
+
+                    <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+
+                </article>
+
+                <article class="article-card">
+
+                    <img src="featured3.jpg" alt="Marketing Article">
+
+                    <h3>The Ultimate Guide to Digital Marketing</h3>
+
+                    <p>Strategies and techniques for reaching your target audience online.</p>
+
+                    <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <section id="courses">
+
+            <h2>Popular Courses</h2>
+
+            <div class="course-grid">
+
+                <div class="course-card">
+
+                    <img src="course1.jpg" alt="Web Development Course">
+
+                    <h3>Web Development Bootcamp</h3>
+
+                    <p>Learn to build websites and web applications from scratch.</p>
+
+                    <a href="#">Enroll Now</a>
+
+                </div>
+
+                <div class="course-card">
+
+                    <img src="course2.jpg" alt="Data Science Course">
+
+                    <h3>Data Science Fundamentals</h3>
+
+                    <p>An introduction to the world of data science and machine learning.</p>
+
+                    <a href="#">Enroll Now</a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="newsletter">
+
+            <h2>Stay Updated</h2>
+
+            <p>Subscribe to our newsletter for the latest articles, courses, and exclusive offers.</p>
+
+            <div class="newsletter-form">
+
+                <input type="email" placeholder="Enter your email">
+
+                <button>Subscribe</button>
+
+            </div>
 
         </section>
 
     </main>
 
-    <footer class="footer">
+    <footer>
 
-        <div class="container">
+        <div class="social">
 
-            <p>&copy; 2025 Exa16indo. Arsitektur Expert Level.</p>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+            <a href="#"><i class="fab fa-twitter"></i></a>
+
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+
+            <a href="#"><i class="fab fa-youtube"></i></a>
 
         </div>
 
+        <p>&copy; 2025 Mastery Blog. All rights reserved.</p>
+
     </footer>
 
-    <!-- Penting: type="module" memungkinkan kita menggunakan import/export di JS -->
+    <div id="loginModal" class="modal">
 
-    <script src="app.js" type="module" defer></script>
+        <div class="modal-content">
+
+            <span class="close">&times;</span>
+
+            <h2>Login</h2>
+
+            <input type="text" id="username" placeholder="Username">
+
+            <input type="password" id="password" placeholder="Password">
+
+            <button id="loginSubmit">Login</button>
+
+            <p id="loginError" class="error"></p>
+
+        </div>
+
+    </div>
+
+    <div id="signupModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close">&times;</span>
+
+            <h2>Sign Up</h2>
+
+            <input type="text" id="newUsername" placeholder="Username">
+
+            <input type="email" id="newEmail" placeholder="Email">
+
+            <input type="password" id="newPassword" placeholder="Password">
+
+            <button id="signupSubmit">Sign Up</button>
+
+            <p id="signupError" class="error"></p>
+
+        </div>
+
+    </div>
+
+    <div id="fileUploadModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close">&times;</span>
+
+            <h2>Upload File</h2>
+
+            <input type="file" id="fileInput">
+
+            <button id="uploadButton">Upload</button>
+
+            <p id="uploadMessage" class="message"></p>
+
+        </div>
+
+    </div>
+
+    <button id="uploadFileBtn">Upload File</button>
 
 </body>
 
