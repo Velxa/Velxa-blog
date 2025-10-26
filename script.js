@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (username === 'admin' && password === 'password') {
 
-            loginError.textContent = 'Login successful!';
+            loginError.textContent = 'Login berhasil!';
 
             loginError.style.color = 'green';
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
 
-            loginError.textContent = 'Invalid username or password.';
+            loginError.textContent = 'Nama pengguna atau kata sandi salah.';
 
         }
 
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (newUsername && newEmail && newPassword) {
 
-            signupError.textContent = 'Signup successful!';
+            signupError.textContent = 'Pendaftaran berhasil!';
 
             signupError.style.color = 'green';
 
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
 
-            signupError.textContent = 'Please fill in all fields.';
+            signupError.textContent = 'Mohon isi semua kolom.';
 
         }
 
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Insecure file upload (DO NOT USE IN PRODUCTION)
 
-            uploadMessage.textContent = `File "${file.name}" uploaded successfully!`;
+            uploadMessage.textContent = `File "${file.name}" berhasil diunggah!`;
 
             uploadMessage.style.color = 'green';
 
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
 
-            uploadMessage.textContent = 'Please select a file.';
+            uploadMessage.textContent = 'Mohon pilih sebuah file.';
 
             uploadMessage.style.color = 'red';
 
