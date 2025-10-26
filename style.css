@@ -1,227 +1,549 @@
-/* ---------------------------------- */
+/* style.css */
 
-/* 1. Expert Variables & Reset */
+/* General Styles */
 
-/* ---------------------------------- */
+body {
 
-:root {
-
-    /* Colors */
-
-    --color-primary: #007bff;
-
-    --color-text: #212529;
-
-    --color-bg: #f8f9fa;
-
-    --color-card-bg: #ffffff;
-
-    --color-shadow: rgba(0, 0, 0, 0.1);
-
-    
-
-    /* Spacing */
-
-    --space-sm: 8px;
-
-    --space-md: 16px;
-
-    --space-lg: 24px;
-
-}
-
-/* Dark Mode (Modifier Class) */
-
-body.is-dark {
-
-    --color-text: #e9ecef;
-
-    --color-bg: #212529;
-
-    --color-card-bg: #343a40;
-
-    --color-primary: #17a2b8; /* Aksen yang berbeda */
-
-    --color-shadow: rgba(255, 255, 255, 0.1);
-
-}
-
-* {
-
-    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 
     margin: 0;
 
     padding: 0;
 
-}
+    background-color: #f8f9fa;
 
-body {
+    color: #343a40;
 
-    font-family: 'Inter', sans-serif;
-
-    background-color: var(--color-bg);
-
-    color: var(--color-text);
-
-    transition: background-color 0.4s, color 0.4s;
+    line-height: 1.7;
 
 }
 
-.container {
+/* Header Styles */
 
-    max-width: 1200px;
+header {
 
-    margin: 0 auto;
+    background-color: #fff;
 
-    padding: 0 var(--space-lg);
+    color: #212529;
 
-}
-
-/* ---------------------------------- */
-
-/* 2. Header (BEM Example) */
-
-/* ---------------------------------- */
-
-.header {
-
-    background-color: var(--color-primary);
-
-    padding: var(--space-md) 0;
-
-}
-
-.header__wrapper {
+    padding: 1.5rem 0;
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content: space-around;
 
     align-items: center;
 
-}
-
-.logo {
-
-    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 
 }
 
-.nav__link {
+header .logo img {
 
-    color: white;
+    height: 40px;
+
+}
+
+nav a {
+
+    color: #495057;
 
     text-decoration: none;
 
-    margin-left: var(--space-md);
+    padding: 0.5rem 1rem;
 
-    padding: var(--space-sm);
+    font-weight: 500;
 
-    border-radius: 4px;
-
-    transition: background-color 0.2s;
+    transition: color 0.3s ease;
 
 }
 
-.nav__link:hover {
+nav a:hover {
 
-    background-color: rgba(255, 255, 255, 0.2);
+    color: #007bff;
 
 }
 
-.theme-toggle {
+.auth button {
 
-    background: none;
+    background-color: #007bff;
 
-    border: 1px solid white;
+    color: #fff;
 
-    color: white;
+    border: none;
 
-    padding: var(--space-sm) var(--space-md);
+    padding: 0.6rem 1.2rem;
+
+    border-radius: 0.25rem;
 
     cursor: pointer;
 
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    margin-left: 0.75rem;
 
 }
 
-/* ---------------------------------- */
+.auth button:hover {
 
-/* 3. Post List (Grid & Components) */
-
-/* ---------------------------------- */
-
-.main {
-
-    padding: var(--space-lg) 0;
+    background-color: #0056b3;
 
 }
 
-.post-list {
+/* Hero Section Styles */
+
+#hero {
+
+    background: url('hero-image.jpg') no-repeat center center/cover;
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: 8rem 0;
+
+    position: relative;
+
+}
+
+#hero::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+#hero .hero-content {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+#hero h1 {
+
+    font-size: 3rem;
+
+    margin-bottom: 1rem;
+
+}
+
+#hero p {
+
+    font-size: 1.1rem;
+
+    margin-bottom: 2rem;
+
+}
+
+#hero button {
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    border: none;
+
+    padding: 0.8rem 1.6rem;
+
+    border-radius: 0.25rem;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+}
+
+#hero button:hover {
+
+    background-color: #0056b3;
+
+}
+
+/* Featured Articles Styles */
+
+#featured-articles {
+
+    padding: 3rem 1.5rem;
+
+    text-align: center;
+
+}
+
+#featured-articles h2 {
+
+    font-size: 2.2rem;
+
+    margin-bottom: 1.5rem;
+
+}
+
+.article-grid {
 
     display: grid;
 
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
-    gap: var(--space-lg);
-
-    margin-top: var(--space-lg);
+    gap: 1.5rem;
 
 }
 
-.post-card {
+.article-card {
 
-    background-color: var(--color-card-bg);
+    background-color: #fff;
 
-    padding: var(--space-lg);
+    border-radius: 0.5rem;
 
-    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 
-    box-shadow: 0 4px 12px var(--color-shadow);
+    overflow: hidden;
 
-    transition: transform 0.3s ease;
-
-}
-
-.post-card:hover {
-
-    transform: translateY(-5px);
+    transition: transform 0.2s ease;
 
 }
 
-.post-card__title {
+.article-card:hover {
 
-    color: var(--color-primary);
-
-    margin-bottom: var(--space-sm);
+    transform: translateY(-3px);
 
 }
 
-/* ---------------------------------- */
+.article-card img {
 
-/* 4. Responsiveness */
+    width: 100%;
 
-/* ---------------------------------- */
+    height: 220px;
 
-@media (max-width: 768px) {
+    object-fit: cover;
 
-    .header__wrapper {
+}
 
-        flex-direction: column;
+.article-card h3 {
 
-        gap: var(--space-md);
+    font-size: 1.3rem;
 
-    }
+    margin: 1rem;
 
-    .nav {
+}
 
-        display: flex;
+.article-card p {
 
-        flex-wrap: wrap;
+    margin: 0 1rem 1rem 1rem;
 
-        justify-content: center;
+    color: #6c757d;
 
-    }
+}
+
+.article-card a {
+
+    display: block;
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    padding: 0.75rem;
+
+    text-align: center;
+
+    transition: background-color 0.3s ease;
+
+}
+
+.article-card a:hover {
+
+    background-color: #0056b3;
+
+}
+
+/* Courses Section Styles */
+
+#courses {
+
+    padding: 3rem 1.5rem;
+
+    text-align: center;
+
+    background-color: #f1f3f5;
+
+}
+
+#courses h2 {
+
+    font-size: 2.2rem;
+
+    margin-bottom: 1.5rem;
+
+}
+
+.course-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 1.5rem;
+
+}
+
+.course-card {
+
+    background-color: #fff;
+
+    border-radius: 0.5rem;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+
+    overflow: hidden;
+
+    transition: transform 0.2s ease;
+
+}
+
+.course-card:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.course-card img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+}
+
+.course-card h3 {
+
+    font-size: 1.3rem;
+
+    margin: 1rem;
+
+}
+
+.course-card p {
+
+    margin: 0 1rem 1rem 1rem;
+
+    color: #6c757d;
+
+}
+
+.course-card a {
+
+    display: block;
+
+    background-color: #28a745;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    padding: 0.75rem;
+
+    text-align: center;
+
+    transition: background-color 0.3s ease;
+
+}
+
+.course-card a:hover {
+
+    background-color: #1e7e34;
+
+}
+
+/* Newsletter Styles */
+
+#newsletter {
+
+    padding: 3rem 1.5rem;
+
+    text-align: center;
+
+}
+
+#newsletter h2 {
+
+    font-size: 2.2rem;
+
+    margin-bottom: 1rem;
+
+}
+
+.newsletter-form {
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+.newsletter-form input {
+
+    padding: 0.75rem;
+
+    border: 1px solid #ced4da;
+
+    border-radius: 0.25rem 0 0 0.25rem;
+
+    width: 300px;
+
+}
+
+.newsletter-form button {
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    border: none;
+
+    padding: 0.75rem 1.5rem;
+
+    border-radius: 0 0.25rem 0.25rem 0;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+}
+
+.newsletter-form button:hover {
+
+    background-color: #0056b3;
+
+}
+
+/* Footer Styles */
+
+footer {
+
+    background-color: #343a40;
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: 1.5rem 0;
+
+}
+
+.social a {
+
+    color: #fff;
+
+    font-size: 1.2rem;
+
+    margin: 0 0.75rem;
+
+    transition: color 0.3s ease;
+
+}
+
+.social a:hover {
+
+    color: #007bff;
+
+}
+
+/* Modal Styles */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 1;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: auto;
+
+    background-color: rgba(0,0,0,0.4);
+
+}
+
+.modal-content {
+
+    background-color: #fff;
+
+    margin: 15% auto;
+
+    padding: 20px;
+
+    border: 1px solid #888;
+
+    width: 80%;
+
+    border-radius: 0.5rem;
+
+    position: relative;
+
+}
+
+.close {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    color: #aaa;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    padding: 5px;
+
+    cursor: pointer;
+
+}
+
+.close:hover,
+
+.close:focus {
+
+    color: black;
+
+    text-decoration: none;
+
+}
+
+.error {
+
+    color: red;
+
+}
+
+.message {
+
+    color: green;
 
 }
